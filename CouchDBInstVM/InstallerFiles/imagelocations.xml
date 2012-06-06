@@ -1,0 +1,26 @@
+<imagelocations>
+  <imagelocation>
+    <location>West US</location>
+    <imageurl>http://msopentechprodwestus.blob.core.windows.net/vhd-store/WIN2K8-R2-WINRM-WU-20120605002628.vhd</imageurl>
+  </imagelocation>
+  <imagelocation>
+    <location>East US</location>
+    <imageurl>http://msopentechprodeastus.blob.core.windows.net/vhd-store/WIN2K8-R2-WINRM-EU-20120605002739.vhd</imageurl>
+  </imagelocation>
+  <imagelocation>
+    <location>East Asia</location>
+    <imageurl>http://msopentechprodeasia.blob.core.windows.net/vhd-store/WIN2K8-R2-WINRM-EA-20120605004514.vhd</imageurl>
+  </imagelocation>
+  <imagelocation>
+    <location>Southeast Asia</location>
+    <imageurl>http://msopentechprodseasia.blob.core.windows.net/vhd-store/WIN2K8-R2-WINRM-SEA-20120605004755.vhd</imageurl>
+  </imagelocation>
+  <imagelocation>
+    <location>North Europe</location>
+    <imageurl>http://msopentechprodneurope.blob.core.windows.net/vhd-store/WIN2K8-R2-WINRM-NE-20120605005206.vhd</imageurl>
+  </imagelocation>
+  <imagelocation>
+    <location>West Europe</location>
+    <imageurl>http://msopentechprodweurope.blob.core.windows.net/vhd-store/WIN2K8-R2-WINRM-WE-20120605005706.vhd</imageurl>
+  </imagelocation>
+</imagelocations>

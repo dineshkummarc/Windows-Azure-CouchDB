@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+$WIN\heat.exe dir <Path-to-InstallerFiles-Bin-Directory> -srd -gg -g1 -cg azurecmdfiles -sfrag -dr PowerShellFolder -var var.sourcedir -o azurecmdfiles.wxi
+-->
+<Include  xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="PowerShellFolder">
+      <Component Id="cmpB9A05AF550A41831E4F983586AD2A187" Guid="0B1ECD84-AA72-4D94-8D9A-1F35687D142A">
+        <File Id="fil63519866A71C934FC1B7946E5BE66316" KeyPath="yes" Source="$(var.sourcedir)\check-status.js" />
+      </Component>
+      <Component Id="cmp160AEABD058D0C14604E8D4B6887AA98" Guid="E09FDC67-BE31-4253-BFB7-5243A0909DF7">
+        <File Id="fil7C7D46B3B4F5DE05D3D0DA387489EE7C" KeyPath="yes" Source="$(var.sourcedir)\couchdbCreateReplicaDB.ps1" />
+      </Component>
+      <Component Id="cmp37B7C6AAF40CF9BBD6952645AA971DB2" Guid="DC60A8C1-0FF6-41A6-832F-0E35895DB11E">
+        <File Id="fil7FAA7A77929956170226E6F83CF33EF6" KeyPath="yes" Source="$(var.sourcedir)\deploy-couchdb.ps1" />
+      </Component>
+      <Component Id="cmpE2F829D6D3943BADEAF0A5CBC73F277A" Guid="459D12D4-DBC3-4A38-B885-5CF7140775FB">
+        <File Id="fil3F17AA90E626C7AC6417FE5AC38A515F" KeyPath="yes" Source="$(var.sourcedir)\remote-setup-1.ps1" />
+      </Component>
+      <Component Id="cmp05F1C3E48264FC6B8D3DA6E1F28A0226" Guid="56A2C3A6-0D50-4CB7-9AC5-53CDB138F635">
+        <File Id="filEACABD53D193A87237ED7C7FF3B1932D" KeyPath="yes" Source="$(var.sourcedir)\remote-setup.ps1" />
+      </Component>
+      <Component Id="cmpDA49B852D6E4DC394C21F398498F6C66" Guid="0466554A-2DE9-49EF-A97D-EF625E8BF811">
+        <File Id="fil7EDC063C2AF3CFA1A0A4AFB0BD59E3E4" KeyPath="yes" Source="$(var.sourcedir)\setup-iaastool.ps1" />
+      </Component>
+      <Component Id="cmpDA49B852D6E4DC394C21F398498E7E88" Guid="0466554A-2DE9-49EF-A97D-EF625E8BE033">
+        <File Id="fil7EDC063C2AF3CFA1A0A4AFB0BD59F5E6" KeyPath="yes" Source="$(var.sourcedir)\powershell.exe.config" />
+      </Component>
+      <Component Id="cmpDA49B852D6E5ED405D32E409509F8F99" Guid="0466554A-3EF0-50FE-B08E-FE736F9CF144">
+        <File Id="fil7EDC063C2AF3CFA1B1B5BEC1CE60E6F7" KeyPath="yes" Source="$(var.sourcedir)\setup.xml" />
+      </Component>
+      <Component Id="cmpDA49B852D6E5ED405D32E510600E9A77" Guid="0466554A-4FD1-61DF-C19B-EE924C0AE232">
+        <File Id="fil8FCB234E3BE4DEB2A6C3CCA2DA73A7A8" KeyPath="yes" Source="$(var.sourcedir)\imagelocations.xml" />
+      </Component>
+      <Component Id="cmp47DEB1D466E4431F949DCCB9157BC032" Guid="7C518A71-0ECA-4C22-84E8-EE2D2078F710">
+        <File Id="filE740BA4C836D435AAC9BC9982FFCA60C" KeyPath="yes" Source="$(var.sourcedir)\validate-image-name.js" />
+      </Component>
+      <Component Id="cmpE0C8BD16E636450FB31E0830F63B19A8" Guid="3EA86715-2EF8-456E-A9D2-B460187E9188">
+        <File Id="fil74D4E32CCF864B3BB0693CABE1764186" KeyPath="yes" Source="$(var.sourcedir)\init-storage.js" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="VersionedFolder">
+      <Component Id="cmpDA49B852D6E4DC394C21F398498F6D77" Guid="0466554A-2DE9-49EF-A97D-EF625E8BF922">
+        <File Id="fil7EDC063C2AF3CFA1A0A4AFB0BD59E4F5" KeyPath="yes" Source="$(var.sourcedir)\help.mht" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="azurecmdfiles">
+      <ComponentRef Id="cmpB9A05AF550A41831E4F983586AD2A187" />
+      <ComponentRef Id="cmp160AEABD058D0C14604E8D4B6887AA98" />
+      <ComponentRef Id="cmp37B7C6AAF40CF9BBD6952645AA971DB2" />
+      <ComponentRef Id="cmpE2F829D6D3943BADEAF0A5CBC73F277A" />
+      <ComponentRef Id="cmp05F1C3E48264FC6B8D3DA6E1F28A0226" />
+      <ComponentRef Id="cmpDA49B852D6E4DC394C21F398498F6C66" />
+      <ComponentRef Id="cmpDA49B852D6E4DC394C21F398498F6D77" />
+      <ComponentRef Id="cmpDA49B852D6E4DC394C21F398498E7E88" />
+      <ComponentRef Id="cmpDA49B852D6E5ED405D32E409509F8F99" />
+      <ComponentRef Id="cmpDA49B852D6E5ED405D32E510600E9A77" />
+      <ComponentRef Id="cmp47DEB1D466E4431F949DCCB9157BC032" />
+      <ComponentRef Id="cmpE0C8BD16E636450FB31E0830F63B19A8" />
+    </ComponentGroup>
+  </Fragment>
+</Include>

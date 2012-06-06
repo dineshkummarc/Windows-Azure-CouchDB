@@ -1,0 +1,11 @@
+<setup>
+  <nodejs>
+    <minversion>v0.6.18</minversion>
+    <downloadurl>http://nodejs.org/dist/v0.6.18/node-v0.6.18.msi</downloadurl>
+  </nodejs>
+  <iaastool>
+    <packagename>azure-0.5.3</packagename>
+    <usepackagename>false</usepackagename>
+    <downloadurl>http://go.microsoft.com/fwlink/?LinkId=253472&amp;clcid=0x409</downloadurl>
+  </iaastool>
+</setup>

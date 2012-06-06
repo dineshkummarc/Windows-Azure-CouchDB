@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+  xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <?define productName="CouchDB Installer for Windows Azure" ?>
+  <?define sourcedir="$(var.SolutionDir)InstallerFiles\bin\$(var.Configuration)\" ?>
+
+  <?define version="0.5.3" ?>
+  <?define versionedFolder="June2012" ?>
+  <?define versionedStartMenuFolder="CouchDB Installer for Windows Azure" ?>
+
+  <Product Id="0acbb0b1-86e4-43ea-bc62-5c3e585a7486"
+           Name="$(var.productName)"
+           Language="1033"
+           Version="$(var.version)"
+           Manufacturer="Microsoft Open Technologies, Inc."
+           UpgradeCode="930549c1-839b-434e-8fb3-2f556b81c871">
+
+    <Package InstallerVersion="200" Compressed="yes" Platform="x86" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+                  DowngradeErrorMessage="A later version of CouchDB Installer for Windows Azure is already installed. Setup will now exit." />
+
+    <Property Id="POWERSHELLVERSION">
+      <RegistrySearch Id="POWERSHELLVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\1\PowerShellEngine" Name="PowerShellVersion" Type="raw" />
+    </Property>
+
+    <Condition Message="PowerShell 2.0 must be installed before CouchDB Installer for Windows Azure installation.">
+      <![CDATA[Installed or (POWERSHELLVERSION = "2.0")]]>
+    </Condition>
+
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+
+    <Condition Message="This application requires .NET Framework 4.0 Full version. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+    </Condition>
+    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MicrosoftOpenTechFolder" Name = "Microsoft Open Tech">
+          <Directory Id="AzureSdkFolder" Name = "Windows Azure">
+            <Directory Id="IAASCouchFolder" Name = "CouchDBInstVM">
+              <Directory Id="VersionedFolder" Name = "$(var.versionedFolder)">
+                <Directory Id="PowerShellFolder" Name = "PowerShell"/>
+                <Directory Id="ModulesFolder" Name = "modules"/>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="AzureSdkVMCouchDBFolder" Name="$(var.versionedStartMenuFolder)"/>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="AzureSdkVMCouchDBFolder">
+      <Component Id="AzureSdkVMCouchDBShortcut" Guid="FEBDB84F-9DC9-443B-806D-3398026A3878">
+        <Shortcut Id="AzureSdkIAASCouchDBStartMenuShortcut"
+                  Name="CouchDB Installer for Windows Azure"
+                  Description="Windows PowerShell script for deploying CouchDB on Windows Azure Virtual Machines"
+                  Target="[SystemFolder]\WindowsPowerShell\v1.0\powershell.exe"
+                  Arguments="-NoExit -Command &quot;cd '[PowerShellFolder]'&quot;"
+                  />
+        <util:InternetShortcut Id="HelpShortcut"
+                Name="Getting Started"
+                       Target="[VersionedFolder]help.mht"/>
+        <File Id="DownloadPublishSettingsLnk" KeyPath="no" Source="media\Download PublishSettings.url" />
+        <RemoveFolder Id="AzureSdkVMCouchDBFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Microsoft SDKs\WindowsAzureVMCouchDB\$(var.version)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Binary Id="CustomActionScript" SourceFile="Scripts\CustomAction.vbs" />
+
+    <CustomAction Id="SetPropertiesForCopyPowershellExeConfigAction"
+                  Property="CopyPowershellExeConfigAction"
+                  Value="[PowerShellFolder];[PowerShellFolder]" />
+    <CustomAction Id="CopyPowershellExeConfigAction"
+                  BinaryKey="CustomActionScript"
+                  VBScriptCall="Main"
+                  Impersonate="no"
+                  Return="check"
+                  Execute="deferred" />
+
+    <InstallExecuteSequence>
+      <Custom Action="SetPropertiesForCopyPowershellExeConfigAction" Before="InstallInitialize">Not Installed</Custom>
+      <Custom Action="CopyPowershellExeConfigAction" After="InstallFiles">Not Installed</Custom>
+    </InstallExecuteSequence>
+
+    <Feature Id="azurecmdiaascouchdb" Title="CouchDB Installer for Windows Azure" Level="1" Description="Windows PowerShell script for deploying CouchDB on Windows Azure Virtual Machines">
+      <ComponentGroupRef Id="azurecmdfiles" />
+      <ComponentRef Id="AzureSdkVMCouchDBShortcut" />
+      <ComponentGroupRef Id="Product.Generated" />
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
+  </Product>
+
+  <?include azurecmdfiles.wxi ?>
+
+</Wix>

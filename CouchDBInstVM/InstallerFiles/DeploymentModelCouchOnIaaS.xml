@@ -1,0 +1,34 @@
+<DeploymentModel  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Parameters>
+    <Parameter Name="ServiceModel" Value="iaas"></Parameter>
+    <Parameter Name="Subscription" Value="testSubscription"></Parameter>
+    <Parameter Name="VMCount" Value="3"></Parameter>
+    <Parameter Name="DomainName" Value="couchoneclick" Required="yes"></Parameter>
+    <Parameter Name="WinRMImage" Value="WIN2K8-R2-WINRM"></Parameter>
+    <Parameter Name="Password" Value="abcXYZ123"></Parameter>
+    <Parameter Name="Region" Value="Windows Azure Preview"></Parameter>
+    <Parameter Name="CouchDBIaaSScriptPath" Value="C:\::ProgramFiles::\Microsoft Open Tech\Windows Azure\CouchDBInstVM\June2012\PowerShell\deploy-couchdb.ps1"></Parameter>
+    <Parameter Name="StorageAccountName" ValuePrefixRef="DomainName" ValueSuffix="stg"></Parameter>
+    <Parameter Name="DeploymentName" ValuePrefixRef="DomainName" ValueSuffix="deploy"></Parameter>
+    <Parameter Name="DeploymentOption" Value="Production"></Parameter>
+    <Parameter Name="PublishSettingsPath" Value=""></Parameter>
+    <Parameter Name="PublishSettingsFilePath" Value=""></Parameter>
+    <Parameter Name="CouchDBOneClickSetupPath" Value="http://localhost/CouchDBInstVM.msi"></Parameter>
+    <Parameter Name="CouchDBOneClickName" Value="CouchDB IaaS OneClick"></Parameter>
+  </Parameters>
+  <Steps>
+    <Step Type="PS1" Command="get-and-install-msi.ps1" Message="Installing CouchDB Installer for Windows Azure">
+      <CommandParam Name="" ParameterName="CouchDBOneClickSetupPath" />
+      <CommandParam Name="" ParameterName="CouchDBIaaSScriptPath" />
+      <CommandParam Name="" ParameterName="CouchDBOneClickName" />
+    </Step>
+    <Step Type="PS1" Command="C:\Program Files (x86)\Microsoft Open Tech\Windows Azure\CouchDBInstVM\June2012\PowerShell\deploy-couchdb.ps1" Message="Executing Deploy-Couch PS Script">
+      <CommandParam Name="" ParameterName="VMCount" />
+      <CommandParam Name="" ParameterName="DomainName" />
+      <CommandParam Name="" ParameterName="WinRMImage" />
+      <CommandParam Name="" ParameterName="Password" />
+      <CommandParam Name="" ParameterName="Region" />
+      <CommandParam Name="" ParameterName="PublishSettingsFilePath" />
+    </Step>
+  </Steps>
+</DeploymentModel>
