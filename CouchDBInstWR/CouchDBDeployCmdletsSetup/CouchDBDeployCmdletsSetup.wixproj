@@ -45,7 +45,8 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent />
+    <PostBuildEvent>COPY /Y $(SolutionDir)ConfigFiles\%2a.xml  $(TargetDir)
+COPY /Y $(SolutionDir)CouchDBDeployCmdlets\tou.html  $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
