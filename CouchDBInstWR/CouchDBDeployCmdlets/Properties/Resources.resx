@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddAzureCouchWorkerRoleSuccessMessage" xml:space="preserve">
+    <value>CouchDB Worker Role {0} has been created with {1} instances at '{2}'. By default only local storage is set in the configuration. Please make sure to call Set-AzureCouchStorageAccount command to set Windows Azure Storage account before publishing your service to Windows Azure.</value>
+  </data>
+  <data name="AzureCouchDBRegistryInstallLocationKey" xml:space="preserve">
+    <value>InstallLocation</value>
+  </data>
+  <data name="AzureCouchDBRegistrySectionName" xml:space="preserve">
+    <value>Software\CouchDB\CouchDBInstWR</value>
+  </data>
+  <data name="AzureSdkBinFolder" xml:space="preserve">
+    <value>Windows Azure SDK/v1.6/bin</value>
+  </data>
+  <data name="AzureSdkDirectoryName" xml:space="preserve">
+    <value>Windows Azure SDK Deployment Cmdlets</value>
+  </data>
+  <data name="AzureSdkDirectoryNotFound" xml:space="preserve">
+    <value>Couldn't find {0} directory. Please run Import-AzureService -Path cmdlet to create {0} directory.</value>
+  </data>
+  <data name="AzureStorageAccountAlreadyExistsMessage" xml:space="preserve">
+    <value>Storage account '{0}' already exists.</value>
+  </data>
+  <data name="AzureStorageAccountConfiguredForCouchRoleMessage" xml:space="preserve">
+    <value>Storage account '{0}' configured for the CouchDB role '{1}'.</value>
+  </data>
+  <data name="AzureStorageAccountCreatedMessage" xml:space="preserve">
+    <value>Storage account '{0}' created.</value>
+  </data>
+  <data name="CertificateFileName" xml:space="preserve">
+    <value>Certificate.cer</value>
+  </data>
+  <data name="CertificateNotFoundInStore" xml:space="preserve">
+    <value>No certificate was found in the certificate store with thumbprint {0}.</value>
+  </data>
+  <data name="CouchDBBinariesDownloadFailedMessage" xml:space="preserve">
+    <value>Failed to download CouchDB binaries.</value>
+  </data>
+  <data name="CouchDBBinariesDownloadScriptArguments" xml:space="preserve">
+    <value>WorkerRole\CouchDB</value>
+  </data>
+  <data name="CouchDBBinariesDownloadScriptName" xml:space="preserve">
+    <value>CouchDbScaffolding\WorkerRole\downloadcouchdb.ps1</value>
+  </data>
+  <data name="CouchDBBinariesDownloadScriptNotAvailable" xml:space="preserve">
+    <value>CouchDB 1.1.1 installation failed. You may try installing CouchDB 1.1.1 yourself from the Apache site and retry.</value>
+  </data>
+  <data name="CouchDBBinariesDownloadSuccessMessage" xml:space="preserve">
+    <value>Successfully downloaded CouchDB binaries from Apache site.</value>
+  </data>
+  <data name="CouchDBBinariesNotAvailableMessage" xml:space="preserve">
+    <value>CouchDB binaries not available. You may try installing CouchDB 1.1.1 yourself from the Apache site and retry.</value>
+  </data>
+  <data name="CouchDBBinaryFileName" xml:space="preserve">
+    <value>WorkerRole\CouchDB\Install.exe</value>
+  </data>
+  <data name="CouchDBDataDir" xml:space="preserve">
+    <value>CouchDBDataDir</value>
+  </data>
+  <data name="CouchScaffoldFolder" xml:space="preserve">
+    <value>workerrole</value>
+  </data>
+  <data name="CreateStorageAccountWaitMessage" xml:space="preserve">
+    <value>Creating storage service {0}</value>
+  </data>
+  <data name="DataConnectionStringSettingName" xml:space="preserve">
+    <value>DataConnectionString</value>
+  </data>
+  <data name="DiagnosticsConnectionString" xml:space="preserve">
+    <value>Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString</value>
+  </data>
+  <data name="InstallNodeJsModuleScriptName" xml:space="preserve">
+    <value>WorkerRole\InstallNodeJSModules.ps1</value>
+  </data>
+  <data name="InstallNodeJSModuleScriptNotAvailable" xml:space="preserve">
+    <value>Script file required to install node js module is not available.</value>
+  </data>
+  <data name="InvalidCertificate" xml:space="preserve">
+    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettings to download updated settings.</value>
+  </data>
+  <data name="InvalidFileFormatMsg" xml:space="preserve">
+    <value>Invalid file extension. This command works only on *{0} file extension</value>
+  </data>
+  <data name="InvalidPath" xml:space="preserve">
+    <value>{0} doesn't exist in {1} or you've not passed valid value for it.</value>
+  </data>
+  <data name="InvalidPublishSettingsSchema" xml:space="preserve">
+    <value>The provided publish settings file {0} has invalid content. Please get valid by running cmdlet Get-AzurePublishSettings.</value>
+  </data>
+  <data name="InvalidRoleInstancesMessage" xml:space="preserve">
+    <value>Invalid number of instances specified. Role must have at least one instance.</value>
+  </data>
+  <data name="LocalStorageAzureDriveCache" xml:space="preserve">
+    <value>AzureDriveCache</value>
+  </data>
+  <data name="LocalStorageCouchDBLocalDataDir" xml:space="preserve">
+    <value>CouchDBLocalDataDir</value>
+  </data>
+  <data name="LocalStorageCouchInstall" xml:space="preserve">
+    <value>CouchInstall</value>
+  </data>
+  <data name="PublishSettingsFileExtention" xml:space="preserve">
+    <value>.PublishSettings</value>
+  </data>
+  <data name="PublishSettingsFileName" xml:space="preserve">
+    <value>Azure.PublishSettings</value>
+  </data>
+  <data name="PublishSettingsSetSuccessfully" xml:space="preserve">
+    <value>Publish settings imported</value>
+  </data>
+  <data name="ScaffoldingFolder" xml:space="preserve">
+    <value>Scaffolding</value>
+  </data>
+  <data name="ServiceConfigurationCloudFileName" xml:space="preserve">
+    <value>ServiceConfiguration.Cloud.cscfg</value>
+  </data>
+  <data name="ServiceConfigurationLocalFileName" xml:space="preserve">
+    <value>ServiceConfiguration.Local.cscfg</value>
+  </data>
+  <data name="ServiceDefinitionFileName" xml:space="preserve">
+    <value>ServiceDefinition.csdef</value>
+  </data>
+  <data name="ServiceDeploymentName" xml:space="preserve">
+    <value>{0}Deploy</value>
+  </data>
+  <data name="ServiceNameMissingMessage" xml:space="preserve">
+    <value>Please provide name for the hosted service.</value>
+  </data>
+  <data name="ServiceUrl" xml:space="preserve">
+    <value>http://{0}.cloudapp.net</value>
+  </data>
+  <data name="SettingsFileName" xml:space="preserve">
+    <value>deploymentSettings.json</value>
+  </data>
+  <data name="SetupCmdPath" xml:space="preserve">
+    <value>{0}/setup.cmd</value>
+  </data>
+  <data name="SubscriptionIdNotFoundMessage" xml:space="preserve">
+    <value>The provided subscription name doesn't exist in the imported publish profile. If subscriptions have changed for the hosted service, retrieve an updated profile by using Get-AzurePublishSettings then import the profile using Import-AzurePublishSettings.</value>
+  </data>
+  <data name="UpdateAzureCouchWorkerRoleSuccessMessage" xml:space="preserve">
+    <value>CouchDB Worker Role {0} already exists. Instance count updated to {1}.</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Please wait...</value>
+  </data>
+  <data name="WorkerRole" xml:space="preserve">
+    <value>CouchHostWorkerRole</value>
+  </data>
+</root>

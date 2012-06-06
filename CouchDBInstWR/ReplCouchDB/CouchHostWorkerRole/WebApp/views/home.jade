@@ -1,0 +1,47 @@
+html
+head
+  title.title= pageTitle
+  link(rel='stylesheet', href='/stylesheets/style.css')
+
+body
+h1.title= pageTitle
+
+form
+| Current tasks:
+
+p
+table(border="1")
+  tr
+    td Name
+    td Category
+    td Date
+    td Complete
+    each item in tasklist
+      tr
+        td #{item.name}
+        td #{item.category}
+        td #{item.date}
+        td
+          input(type="checkbox", name="completed", readonly=true, checked=item.completed)
+
+hr
+
+p
+| Enter new task:
+p
+
+form(action="/home/newitem", method="post")
+  table(border="1")
+    tr
+      td Item Name:
+      td
+        input(name="item[name]", type="textbox")
+    tr
+      td Item Category:
+      td
+        input(name="item[category]", type="textbox")
+    tr
+      td Item Date:
+      td
+        input(name="item[date]", type="textbox")
+        input(type="submit", value="Add item")

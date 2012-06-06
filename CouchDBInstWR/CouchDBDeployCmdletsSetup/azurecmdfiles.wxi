@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <WixVariable Id="WixUILicenseRtf" Value="SingleClickCouchOnAzureLicensee.rtf" />
+    <DirectoryRef Id="AzureCouchDBCmdletFolder">
+      <Directory Id="dirB1326796D3B0E34897B75A230C9DEDB9" Name="WorkerRole">
+        <Component Id="cmp9C9A50FCF32C67D230E8F00CEE6E8D8E" Guid="{83B9BB76-443F-4DD7-93F0-44BDADE0D132}">
+          <File Id="fil629D75862735D68FBB6B77A28910FBDC" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\CouchHostWorkerRole.dll" />
+        </Component>
+        <Component Id="cmp74B06F8EB10D2B5A4174BF49F9C5FF8D" Guid="{C612777A-34EF-497B-BC47-0BE686420C8A}">
+          <File Id="fil2AF3DEEAC59030A2242CF31F5D96F3E0" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\CouchHostWorkerRole.dll.config" />
+        </Component>
+        <Component Id="cmp46745A73AB79693B7C5737A91A7D79D7" Guid="{7FF7937E-62C6-46CA-9F4B-39D6FFD12726}">
+          <File Id="filE5D48986C448138C97D154757E9E251D" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\InstallNodeJSModules.ps1" />
+        </Component>
+        <Component Id="cmpF1D7BED3F99B683FE386993A259036DF" Guid="{C3A677DD-0793-41B5-9ACC-5AA87B22E779}">
+          <File Id="fil3274D5B908F71F3749CFFFD3578B26A6" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\HelperLib.dll" />
+        </Component>
+        <Component Id="cmp5854C8262552ABA28B08A2FE83D685B5" Guid="{ADC43D53-D71B-4A76-A210-7CF9ABE24763}">
+          <File Id="fil824AD91EF0DCC15AA71966BF108E240A" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Microsoft.WindowsAzure.Diagnostics.dll" />
+        </Component>
+        <Component Id="cmp6A1EF7D5C76DABAC774437C79D758F88" Guid="{1D872664-FC6E-497F-855E-3CED37285817}">
+          <File Id="fil92749139A4F2FDEBEEC2ACD34DEEEBBA" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Microsoft.WindowsAzure.Diagnostics.xml" />
+        </Component>
+        <Component Id="cmp2769CAA7386A7FCFEED3AB3665E67027" Guid="{673B7398-1DBF-4C15-9690-56E7DD00B6F2}">
+          <File Id="fil4C7CA896EB85B986DF9FCCAC8A8E3076" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Microsoft.WindowsAzure.StorageClient.dll" />
+        </Component>
+        <Component Id="cmp6B63B613D276E21A95304C8A78C0A3A7" Guid="{C9EA4564-DFC2-4945-B6A2-EB33620AF5FD}">
+          <File Id="fil74A3F81ED943E8569137209EDBCE42C6" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Microsoft.WindowsAzure.StorageClient.xml" />
+        </Component>
+        <Component Id="cmpAD947AF17261B5DB77AA428AD01B8D77" Guid="{837C3B19-B9F6-4E9E-AC49-B663AF65B1BD}">
+          <File Id="filBCC6FCDD9EAF1AF0463973285000F534" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\RoleProperties.txt" />
+        </Component>
+        <Component Id="cmp9CD314611A382E333A970C93F216B914" Guid="{81B826C2-EDDA-4A3F-AB6E-FB79DDB3E98E}">
+          <File Id="fil5E2334C748D57B79F7B33BF622C727B6" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\scaffold.xml" />
+        </Component>
+        <Component Id="cmpF44B5DBD8AF539CFCB137FD97F220153" Guid="{E2C1F66D-904E-419F-B89E-3F704BBA9723}">
+          <File Id="fil6FA092DAA25E1DA2A1154AD0F0418533" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\__entrypoint.txt" />
+        </Component>
+        <Directory Id="dir9EDA881DA3DC660C2666A70268B97CC4" Name="Node">
+          <Directory Id="dir1993F8CC3536EA37C0B37D211166F57E" Name="bin">
+          </Directory>
+          <Directory Id="dirB142A2C9402C2E42442CCD9E6D808188" Name="node_modules">
+            <Directory Id="dir381B1ACB54FFFA85B65DA989C2C1510F" Name=".bin">
+              <Component Id="cmp76BB8F7BA0D1164F4ACD2D379A4C366C" Guid="{6D4ECD9F-AFF9-4D5D-BCB4-4B52E478BF59}">
+                <File Id="fil4199F29DAA81D78B4C9F5EA041F5D56F" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Node\node_modules\.bin\express.cmd" />
+              </Component>
+              <Component Id="cmp1B207334B1A0D9BDD4149AF4C7A49C32" Guid="{A8780362-5FDE-4367-9A82-4ADC2B844D67}">
+                <File Id="fil17382B1E5BA3C0EC56BF798AF61D4E32" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Node\node_modules\.bin\jade.cmd" />
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+        <Directory Id="dirB4AC7B8DA57B2E65FD9894D3300B9CF1" Name="Startup">
+          <Component Id="cmp7ABA1864BB9A00E1BDA1145FB0499941" Guid="{DECCAF1F-9D4C-4B38-A5BE-B8D539B364AF}">
+            <File Id="fil036E96DE0446504AA5310902E3052B9E" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Startup\startup.cmd" />
+          </Component>
+          <Component Id="cmp416DD8BA94FAF929073EBC63F50F6AEF" Guid="{C760850D-09BA-4413-8546-C3D422D494FC}">
+            <File Id="filF87F329CF904D0570B6FC6606A394D1D" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\Startup\vcredist_x86.exe" />
+          </Component>
+        </Directory>
+        <Directory Id="dirCA2B1C6B0FB78700CA7F27991A136E9E" Name="WebApp">
+          <Component Id="cmpA7256BDEFD5BB14573219305D33CB41D" Guid="{E9CE458C-4D1A-4625-8257-F6272D6CFDF1}">
+            <File Id="filB61867AE2499BA3B6FFD665BAC51D903" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\home.js" />
+          </Component>
+          <Component Id="cmpA047101C87E799F763D37296AA5782B2" Guid="{40BFEDD0-DF49-4606-9174-1005FB9FD776}">
+            <File Id="fil0D1720AB664D95E56A2FDF1BA0AA1099" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\server.js" />
+          </Component>
+          <Component Id="cmp2A8A7D74C4FCFFAEC2B4F971394BC7D3" Guid="{CE2BF17F-FA59-436C-8FFD-E9A95774B0C8}">
+            <File Id="fil8B62C1E9BE771702B7A43FDC8E521F38" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\taskProvider.js" />
+          </Component>
+          <Directory Id="dirCCFD2191D6895DD5D3DE5AA96B140231" Name="public">
+            <Directory Id="dir9C3212E0A24EA3C48084E80BE5279CD1" Name="stylesheets">
+              <Component Id="cmp9A671E44520907C663BCBEDC2593CB5F" Guid="{CF4BE484-3E58-4483-9D32-1762CEA5074A}">
+                <File Id="fil7004049D8C0D4F6916BC733A57CE56CC" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\public\stylesheets\style.css" />
+              </Component>
+            </Directory>
+          </Directory>
+          <Directory Id="dir6145069E15ED0DADCB021B3A69F58088" Name="routes">
+            <Component Id="cmp267C355F147EB1DFF78386BE20E36E97" Guid="{65DB7E5A-0C55-45BB-A18E-72E7EBB4FF8F}">
+              <File Id="fil08E41DE406389380AA67511F897A85E8" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\routes\index.js" />
+            </Component>
+          </Directory>
+          <Directory Id="dir013C010736B9E43BE14A316262D3079A" Name="views">
+            <Component Id="cmp8C550C6EF047E2426207F9E1B68AB69D" Guid="{0960C58A-86E6-490A-82B5-2203F6ECBAE1}">
+              <File Id="filFE2BB958AD4F5E8DD8E0259E178AB1B7" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\views\home.jade" />
+            </Component>
+            <Component Id="cmp3B4F9B31A33E9DE2E6570EB697249907" Guid="{30214D5A-F627-4B50-BA33-F06265C33743}">
+              <File Id="filA3B3CCD0F317373A29FD840C367C9354" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\views\index.jade" />
+            </Component>
+            <Component Id="cmp19D7CEC8A0BF21CABDF6C0F8A99E46BD" Guid="{D9D1E58E-D274-4184-ACBF-81C8DB18E7B4}">
+              <File Id="filDC878D58C67DB9522684119369FB449E" KeyPath="yes" Source="$(var.sourcedir)\Scaffolding\CouchDB\WorkerRole\WebApp\views\layout.jade" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="azurecmdfilesCouchDB">
+      <ComponentRef Id="cmp9C9A50FCF32C67D230E8F00CEE6E8D8E" />
+      <ComponentRef Id="cmp74B06F8EB10D2B5A4174BF49F9C5FF8D" />
+      <ComponentRef Id="cmp46745A73AB79693B7C5737A91A7D79D7" />
+      <ComponentRef Id="cmpF1D7BED3F99B683FE386993A259036DF" />
+      <ComponentRef Id="cmp5854C8262552ABA28B08A2FE83D685B5" />
+      <ComponentRef Id="cmp6A1EF7D5C76DABAC774437C79D758F88" />
+      <ComponentRef Id="cmp2769CAA7386A7FCFEED3AB3665E67027" />
+      <ComponentRef Id="cmp6B63B613D276E21A95304C8A78C0A3A7" />
+      <ComponentRef Id="cmpAD947AF17261B5DB77AA428AD01B8D77" />
+      <ComponentRef Id="cmp9CD314611A382E333A970C93F216B914" />
+      <ComponentRef Id="cmpF44B5DBD8AF539CFCB137FD97F220153" />
+
+      <ComponentRef Id="cmp76BB8F7BA0D1164F4ACD2D379A4C366C" />
+      <ComponentRef Id="cmp1B207334B1A0D9BDD4149AF4C7A49C32" />
+      <ComponentRef Id="cmp7ABA1864BB9A00E1BDA1145FB0499941" />
+      <ComponentRef Id="cmp416DD8BA94FAF929073EBC63F50F6AEF" />
+      <ComponentRef Id="cmpA7256BDEFD5BB14573219305D33CB41D" />
+      <ComponentRef Id="cmpA047101C87E799F763D37296AA5782B2" />
+      <ComponentRef Id="cmp2A8A7D74C4FCFFAEC2B4F971394BC7D3" />
+      <ComponentRef Id="cmp9A671E44520907C663BCBEDC2593CB5F" />
+      <ComponentRef Id="cmp267C355F147EB1DFF78386BE20E36E97" />
+      <ComponentRef Id="cmp8C550C6EF047E2426207F9E1B68AB69D" />
+      <ComponentRef Id="cmp3B4F9B31A33E9DE2E6570EB697249907" />
+      <ComponentRef Id="cmp19D7CEC8A0BF21CABDF6C0F8A99E46BD" />
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="MicrosoftPowerShellFolder">
+      <Component Id="cmpB6707D9E5C5ECFDB681C5ED9BA39481D" Guid="AE83F91B-7A53-46FB-A421-C79C11DD4D24">
+        <File Id="filA37AAB894F245EF5B743B4A1E32AA740" KeyPath="yes" Source="$(var.sourcedir)\CouchDBDeployCmdlets.dll" />
+      </Component>
+      <?if $(var.Configuration) = Debug ?>
+      <Component Id="cmpC5013DFAE347841203A100925AE043EC" Guid="AC6221C2-89B4-4C56-A020-422D20CDECC2">
+        <File Id="filFCA96DC56A33A420880761B50C78CB1B" KeyPath="yes" Source="$(var.sourcedir)\CouchDBDeployCmdlets.pdb" />
+      </Component>
+      <?endif?>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="azurecmdfilesMicrosoft">
+      <ComponentRef Id="cmpB6707D9E5C5ECFDB681C5ED9BA39481D" />
+      <?if $(var.Configuration) = Debug ?>
+      <ComponentRef Id="cmpC5013DFAE347841203A100925AE043EC" />
+      <?endif?>
+    </ComponentGroup>
+  </Fragment>
+</Include>

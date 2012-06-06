@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="CouchAzure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*">
+  <Role name="CouchHostWorkerRole">
+    <Instances count="2" />
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" value="DefaultEndpointsProtocol=http;AccountName=couchstg;AccountKey=+kEkbW34eKCqCk2Gldj7isLdb+RMysv2iovfXP1jeAxSRI4+06XDnqr7c/U2UjBgCrAn3Df5LkBpOXpq0F26Xg==" />
+      <Setting name="CloudDriveSize" value="102400" />
+      <Setting name="DatabaseName" value="tasksdb" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=couchstg;AccountKey=+kEkbW34eKCqCk2Gldj7isLdb+RMysv2iovfXP1jeAxSRI4+06XDnqr7c/U2UjBgCrAn3Df5LkBpOXpq0F26Xg==" />
+    </ConfigurationSettings>
+    <Certificates>
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

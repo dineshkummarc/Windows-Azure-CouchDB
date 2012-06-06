@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17903531-D952-46E2-9586-9983E53FEB03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CouchDBDeployCmdlets</RootNamespace>
+    <AssemblyName>CouchDBDeployCmdlets</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AzureDeploymentCmdlets">
+      <HintPath>lib\AzureDeploymentCmdlets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Windows\assembly\GAC_MSIL\System.Management.Automation\1.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Couch\Cmdlet\AddAzureCouchWorkerRole.cs" />
+    <Compile Include="Couch\Cmdlet\AddNodeJSModules.cs" />
+    <Compile Include="Couch\Cmdlet\GetAzureCouchDBBinaries.cs" />
+    <Compile Include="Couch\Cmdlet\GetNodeJSExecutables.cs" />
+    <Compile Include="Couch\Cmdlet\SetAzureCouchStorageAccountCommand.cs" />
+    <Compile Include="Model\GlobalComponents.cs" />
+    <Compile Include="Model\GlobalPathInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\AzureStorageAccount.cs" />
+    <Compile Include="Utilities\DeploymentModelHelper.cs" />
+    <Compile Include="Utilities\General.cs" />
+    <Compile Include="Utilities\ResourceName.cs" />
+    <Compile Include="Utilities\Session.cs" />
+    <Compile Include="XmlSchema\DeploymentModel.cs" />
+    <Compile Include="XmlSchema\ServiceConfigurationSchema.cs" />
+    <Compile Include="XmlSchema\ServiceDefinitionSchema.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scaffolding\CouchDB\WorkerRole\RoleProperties.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scaffolding\CouchDB\WorkerRole\scaffold.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scaffolding\CouchDB\WorkerRole\__entrypoint.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tou.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scaffolding\CouchDB\WorkerRole\downloadcouchdb.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Scaffolding\Templates\RoleSettings.template">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scaffolding\Templates\Web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scaffolding\Templates\WorkerRole.template">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CopyWRScaffolding.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scaffolding\CouchDB\WorkerRole\InstallNodeJSModules.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scaffolding\CouchDB\WorkerRole\Node\node_modules\.bin\express.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scaffolding\CouchDB\WorkerRole\Node\node_modules\.bin\jade.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scaffolding\CouchDB\WorkerRole\Node\bin\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>COPY /Y $(SolutionDir)ReplCouchDB\CouchHostWorkerRole\bin\$(ConfigurationName)\CouchHostWorkerRole.dll  $(TargetDir)Scaffolding\CouchDB\WorkerRole\
+COPY /Y $(SolutionDir)ReplCouchDB\CouchHostWorkerRole\bin\$(ConfigurationName)\HelperLib.dll  $(TargetDir)Scaffolding\CouchDB\WorkerRole\
+CopyWRScaffolding.cmd $(TargetDir) $(SolutionDir) $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>COPY /Y $(SolutionDir)ReplCouchDB\ReplCouchDB\ServiceConfiguration.Cloud.cscfg $(ProjectDir)Scaffolding\Templates\
+COPY /Y $(SolutionDir)ReplCouchDB\ReplCouchDB\ServiceConfiguration.Local.cscfg $(ProjectDir)Scaffolding\Templates\
+COPY /Y $(SolutionDir)ReplCouchDB\ReplCouchDB\ServiceDefinition.csdef $(ProjectDir)Scaffolding\Templates\WorkerRole.template</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

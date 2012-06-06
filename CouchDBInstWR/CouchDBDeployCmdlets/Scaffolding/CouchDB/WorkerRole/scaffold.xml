@@ -1,0 +1,16 @@
+<Scaffold>
+  <ScaffoldFile PathExpression="CouchDB\\.*" />
+  <ScaffoldFile PathExpression="Node\\.*" />
+  <ScaffoldFile PathExpression="Startup\\.*" />
+  <ScaffoldFile PathExpression="WebApp\\.*" />
+  <ScaffoldFile Path="__entrypoint.txt" />
+  
+  <ScaffoldFile Path="Microsoft.WindowsAzure.CloudDrive.dll" />
+  <ScaffoldFile Path="Microsoft.WindowsAzure.Diagnostics.dll" />
+  <ScaffoldFile Path="Microsoft.WindowsAzure.StorageClient.dll" />
+  
+  <ScaffoldFile Path="CouchHostWorkerRole.dll" />
+  <ScaffoldFile Path="HelperLib.dll" />
+  <ScaffoldFile Path="CouchHostWorkerRole.dll.config" />
+  <ScaffoldFile Path="RoleProperties.txt" />
+</Scaffold>

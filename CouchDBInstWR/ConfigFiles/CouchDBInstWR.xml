@@ -1,0 +1,80 @@
+<DeploymentModel  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Parameters>
+    <Parameter Name="ServiceModel" Value="paas"></Parameter>
+    <Parameter Name="Emulator" Value="false"></Parameter>
+    <Parameter Name="Subscription" Value="" Required="yes"></Parameter>
+    <Parameter Name="DomainName" Value="" Required="yes"></Parameter>
+    <Parameter Name="StorageAccountName" ValuePrefixRef="DomainName" ValueSuffix="stg" Required="yes"></Parameter>
+    <Parameter Name="DeploymentName" ValuePrefixRef="DomainName" ValueSuffix="deploy" Required="yes"></Parameter>
+    <Parameter Name="VMSize" Value="Small"></Parameter>
+    <Parameter Name="VMCount" Value="2"></Parameter>
+    <Parameter Name="Region" Value=""></Parameter>
+    <Parameter Name="DeploymentOption" Value="Production"></Parameter>
+    <Parameter Name="AppName" Value="TaskList" Required="yes"></Parameter>
+    <Parameter Name="CouchDBSetupPath" Value="https://github.com/downloads/dch/couchdb/setup-couchdb-1.1.1_js185_otp_R14B03+fix-win32-crypto.exe" Required="yes"></Parameter>
+    <Parameter Name="CouchDBInstallFolder" Value="C:\Program Files (x86)\Apache Software Foundation\CouchDB" Required="yes"></Parameter>
+    <Parameter Name="AzureNodeJSSdkBinPath" Value="C:\Program Files (x86)\nodejs" Required="yes"></Parameter>
+    <Parameter Name="AppFolder" Value="C:\Temp\DeployCouch" Required="yes"></Parameter>
+    <Parameter Name="PublishSettingsPath" Value=""></Parameter>
+    <Parameter Name="PublishSettingsFilePath" Value=""></Parameter>
+    
+    <Parameter Name="CouchDBDeployCmdletsAssemblyPath"
+               Value="C:\Program Files (x86)\Microsoft SDKs\Windows Azure\Nodejs\Nov2011\PowerShell\CouchDBDeployCmdlets.dll" Required="yes"></Parameter>
+    <Parameter Name="AzureDeploymentCmdletsAssemblyPath"
+               Value="C:\Program Files (x86)\Microsoft SDKs\Windows Azure\Nodejs\Nov2011\PowerShell\AzureDeploymentCmdlets.dll" Required="yes"></Parameter>
+    
+    <Parameter Name="ProductId" Value="E8949313-C08A-4AD7-8A8C-57E85685BED4"></Parameter>
+    <Parameter Name="CouchDBDeployCmdletsSetupPath" Value="http://localhost/CouchDBInstWR.msi" Required="yes"></Parameter>
+  
+  </Parameters>
+  <Steps>
+    <Step Type="Cmdlet" Command="Install-AzureSdkForNodeJs" Message="Installing Windows Azure PowerShell for Node.JS">
+    </Step>
+    <Step Type="Cmdlet" Command="Add-LoadAssembly" Message="Loading Windows Azure PowerShell for Node.JS">
+      <CommandParam Name="CmdletsAssemblyPath" ParameterName="AzureDeploymentCmdletsAssemblyPath" />
+    </Step>
+    <Step Type="Cmdlet" Command="Install-AzureOSSCommandlets" Message="Installing">
+      <CommandParam Name="ProductId" ParameterName="ProductId" />
+      <CommandParam Name="DownloadLoc" ParameterName="CouchDBDeployCmdletsSetupPath" />
+    </Step>
+    <Step Type="Cmdlet" Command="Add-LoadAssembly" Message="Loading Windows Azure PowerShell for Apache CouchDB and Node.JS">
+      <CommandParam Name="CmdletsAssemblyPath" ParameterName="CouchDBDeployCmdletsAssemblyPath" />
+    </Step>
+    <Step Type="Cmdlet" Command="Get-AzureCouchDBBinaries" Message="Copying CouchDB Binaries">
+      <CommandParam Name="CouchDBSetupPath" ParameterName="CouchDBSetupPath" />
+      <CommandParam Name="CouchDBInstallFolder" ParameterName="CouchDBInstallFolder" />
+    </Step>
+    <Step Type="Cmdlet" Command="Get-NodeJSExecutables" Message="Copying Node JS Executables">
+      <CommandParam Name="AzureNodeJSSdkBinPath" ParameterName="AzureNodeJSSdkBinPath" />
+    </Step>
+    <Step Type="Cmdlet" Command="New-ApplicationDirectory" Message="Creating application directory">
+      <CommandParam Name="AppFolder" ParameterName="AppFolder" />
+    </Step>
+    <Step Type="ChangeWorkingDir" Command="" Message="Changing to application directory">
+      <CommandParam Name="WorkingDir" ParameterName="AppFolder" />
+    </Step>
+    <Step Type="Cmdlet" Command="New-AzureService" Message="Creating new Azure service">
+      <CommandParam Name="Name" ParameterName="AppName" />
+    </Step>
+    <Step Type="Cmdlet" Command="Add-AzureCouchWorkerRole" Message="Adding Couch Worker Role">
+      <CommandParam Name="Size" ParameterName="VMSize" />
+      <CommandParam Name="Instances" ParameterName="VMCount" />
+    </Step>
+    <Step Type="Cmdlet" Command="Add-NodeJSModules" Message="Installing NodeJS Modules">
+    </Step>
+    <Step Type="Cmdlet" Command="Import-AzurePublishSettings" Message="Importing Publish settings">
+      <CommandParam Name="Path" ParameterName="PublishSettingsFilePath" />
+    </Step>
+    <Step Type="Cmdlet" Command="Set-AzureCouchStorageAccount" Message="Setting storage account details">
+      <CommandParam Name="StorageAccountName" ParameterName="StorageAccountName" />
+      <CommandParam Name="Subscription" ParameterName="Subscription" />
+      <CommandParam Name="StorageAccountLocation" ParameterName="Region" />
+    </Step>
+    <Step Type="Cmdlet" Command="Publish-AzureService -launch" Message="Deploying the app to Azure">
+      <CommandParam Name="Name" ParameterName="DeploymentName" />
+      <CommandParam Name="StorageAccountName" ParameterName="StorageAccountName" />
+      <CommandParam Name="Slot" ParameterName="DeploymentOption" />
+      <CommandParam Name="Location" ParameterName="Region" />
+    </Step>
+  </Steps>
+</DeploymentModel>

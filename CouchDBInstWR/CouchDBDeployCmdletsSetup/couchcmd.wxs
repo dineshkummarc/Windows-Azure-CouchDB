@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!-- creating MSIs for local apps http://blogs.msdn.com/b/astebner/archive/2007/11/18/6385121.aspx -->
+  <?define productName="Windows Azure Powershell for Apache CouchDB and Node.js" ?>
+  <?define sourcedir="$(var.SolutionDir)CouchDBDeployCmdlets\bin\$(var.Configuration)" ?>
+
+  <?define version="0.5.2" ?>
+  <?define azureSdkVersion="v1.6" ?>
+  <?define nodejsCmdletVersionedFolder="Nov2011" ?>
+  <?define nodejsCmdletDll="AzureDeploymentCmdlets.dll" ?>
+  <?define couchdbCmdletDll="CouchDBDeployCmdlets.dll" ?>
+  <?define versionedStartMenuFolder="Windows Azure SDK for Node.js - November 2011" ?>
+
+  <Product Id="E8949313-C08A-4AD7-8A8C-57E85685BED4"
+           Name="$(var.productName)"
+           Language="1033"
+           Version="$(var.version)"
+           Manufacturer="Microsoft"
+           UpgradeCode="B013324B-CC8D-4EB6-85E4-4907D156A67A">
+
+    <Package InstallerVersion="200" Compressed="yes" Platform="x86" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <!-- Windows Azure SDK version -->
+    <Property Id="WindowsAzureSdkVersion">$(var.azureSdkVersion)</Property>
+    <Property Id="CouchDBWorkerRoleFolder"></Property>
+
+    <!-- Dependency on Windows Azure PowerShell for Node.js -->
+    <Property Id="WINDOWSAZURENODEJSSDK">
+      <DirectorySearch Id="WINDOWSAZURENODEJSSDKDir" Path="[ProgramFilesFolder]Microsoft SDKs\Windows Azure\Nodejs">
+      </DirectorySearch>
+    </Property>
+    <Condition Message="You must install Windows Azure PowerShell for Node.js.">
+      Installed OR WINDOWSAZURENODEJSSDK
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <!-- Couchdb install location -->
+        <Directory Id="CouchDBSdkFolder" Name="CouchDB">
+          <Directory Id="WindowsAzureSdkFolderInCouchDB" Name = "Windows Azure">
+            <Directory Id="AzureCouchDBCmdletFolder" Name = "Nodejs" >
+              <Directory Id="CouchDBWorkerRoleFolder" Name="WorkerRole" />
+            </Directory>
+          </Directory>
+        </Directory>
+
+        <!-- Microsoft's node.js install location -->
+        <Directory Id="MicrosoftSdkFolder" Name = "Microsoft SDKs">
+          <Directory Id="WindowsAzureSdkFolder" Name = "Windows Azure">
+            <Directory Id="NodejsFolder" Name = "Nodejs">
+              <Directory Id="NodejsCmdletVersionedFolder" Name = "$(var.nodejsCmdletVersionedFolder)">
+                <Directory Id="MicrosoftPowerShellFolder" Name = "PowerShell"/>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="AzureSdkCouchDBNodejsFolder" Name="$(var.versionedStartMenuFolder)"/>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="AzureSdkCouchDBNodejsFolder">
+      <Component Id="AzureSdkCouchDBNodejsShortcuts" Guid="b6e49120-cb57-4222-bd90-78257e656a49">
+        <RemoveFolder Id="AzureSdkCouchDBNodejsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="SOFTWARE\CouchDB\CouchDBInstWR"
+                       Name="InstallLocation"
+                       Type="string"
+                       Value="[AzureCouchDBCmdletFolder]"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Binary Id="CustomActionScript" SourceFile="Scripts\CustomAction.vbs" />
+
+    <CustomAction Id="SetPropertiesForCopyWindowsAzureSDKFilesAction"
+                  Property="CopyWindowsAzureSDKFilesAction"
+                  Value="[WindowsAzureSdkVersion];[CouchDBWorkerRoleFolder]" />
+    <CustomAction Id="CopyWindowsAzureSDKFilesAction"
+                  BinaryKey="CustomActionScript"
+                  VBScriptCall="Main"
+                  Impersonate="no"
+                  Return="check"
+                  Execute="deferred" />
+
+    <InstallExecuteSequence>
+      <Custom Action="SetPropertiesForCopyWindowsAzureSDKFilesAction" Before="InstallInitialize">Not Installed</Custom>
+      <Custom Action="CopyWindowsAzureSDKFilesAction" After="InstallFiles">Not Installed</Custom>
+    </InstallExecuteSequence>
+
+    <Feature Id="azurecmdnodejs" Title="Windows Azure Powershell for Apache CouchDB and Node.js" Level="1" Description="Windows PowerShell commandlets for deploying Apache CouchDB on Windows Azure">
+      <ComponentGroupRef Id="azurecmdfilesCouchDB" />
+      <ComponentGroupRef Id="azurecmdfilesMicrosoft" />
+      <ComponentRef Id="AzureSdkCouchDBNodejsShortcuts" />
+      <ComponentGroupRef Id="Product.Generated" />
+    </Feature>
+    <!-- Installer UI -->
+    <UI>
+      <UIRef Id="WixUI_Minimal" />
+    </UI>
+  </Product>
+  <?include azurecmdfiles.wxi ?>
+</Wix>
