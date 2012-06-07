@@ -151,7 +151,7 @@ $pathEnv = ($programFiles + "\nodejs") + ";" + $pathEnv
 
 #--------------------------------------------------Read setup.xml file for prerequisite locations----------------------------
 
-logStatus "Reading setup.xml for node.js and 'Windows Azure Cross Platform Tool' package locations and version"
+logStatus "Reading setup.xml for node.js and 'Windows Azure Command Line Tools for Mac and Linux' package locations and version"
 
 if (!(Test-Path -LiteralPath (Join-Path $pwd "setup.xml")  -PathType Leaf)) 
 {
@@ -182,12 +182,12 @@ if ($iaasUsePackageName -eq 'true' -or $iaasUsePackageName -eq 'TRUE') {
 
 $iaasPackageName = $setupfile.setup.iaastool.packagename
 if ($iaasUsePackageName -and !$iaasPackageName) {
-  logErr "Unable to read 'Windows Azure Cross Platform Tool' npm package name from setup.xml [\\setup\iaastool\packagename]"
+  logErr "Unable to read 'Windows Azure Command Line Tools for Mac and Linux' npm package name from setup.xml [\\setup\iaastool\packagename]"
 }
 
 $nodeIAASToolDownloadUrl = $setupfile.setup.iaastool.downloadurl
 if (!$iaasUsePackageName -and !$nodeIAASToolDownloadUrl) {
-  logErr "Unable to read 'Windows Azure Cross Platform Tool' download url from setup.xml [\\setup\iaastool\downloadurl]"
+  logErr "Unable to read 'Windows Azure Command Line Tools for Mac and Linux' download url from setup.xml [\\setup\iaastool\downloadurl]"
 }
 
 logStatus "Retrieved package locations and version from setup.xml"
@@ -509,7 +509,7 @@ if ($result -eq 1) {
 
 #------------------ Download and Install Windows Azure Cross Platform Tool If not installed -------------------------------
 
-$result = checkForPathAndPromptIfNot $nodeIAASToolScriptPath "Windows Azure Cross Platform Tool"
+$result = checkForPathAndPromptIfNot $nodeIAASToolScriptPath "Windows Azure Command Line Tools for Mac and Linux"
 
 if ($result -eq 1) {
     # (Download and) install Windows Azure Cross Platform Tool
@@ -517,26 +517,26 @@ if ($result -eq 1) {
     if ($iaasUsePackageName) {
         $packagePath = $iaasPackageName
     } else {
-        $packagePath = downloadFile $nodeIAASToolDownloadUrl "Windows Azure Cross Platform Tool" "azure-0.5.3.tgz"
+        $packagePath = downloadFile $nodeIAASToolDownloadUrl "Windows Azure Command Line Tools for Mac and Linux" "azure-0.5.3.tgz"
     }
 
-    logStatus "Installing 'Windows Azure Cross Platform Tool'"
+    logStatus "Installing 'Windows Azure Command Line Tools for Mac and Linux'"
     Start-Sleep -s 5
     &$npmpath install $packagePath --global
     If ($lastexitcode -ne 0)
     {
-        logErr "npm install of 'Windows Azure Cross Platform Tool' failed"
+        logErr "npm install of 'Windows Azure Command Line Tools for Mac and Linux' failed"
         cleanDownloadDirAndExit 1
     }
 
-    logSuccess "Done with Installation of 'Windows Azure Cross Platform Tool'. Clearing temporary storage directory"
+    logSuccess "Done with Installation of 'Windows Azure Command Line Tools for Mac and Linux'. Clearing temporary storage directory"
     Start-Sleep -s 5
     $storageDir = Join-Path $pwd "downloadtemp"
     if (Test-Path -LiteralPath $storageDir -PathType Container) {
         Remove-Item -path $storageDir -force -Recurse
     }
 } elseif ($result -eq 2) {
-    logErr "'Windows Azure Cross Platform Tool' is required for One-Click install, Please rerun the script to install it."
+    logErr "'Windows Azure Command Line Tools for Mac and Linux' is required for One-Click install, Please rerun the script to install it."
     cleanDownloadDirAndExit 1
 }
 

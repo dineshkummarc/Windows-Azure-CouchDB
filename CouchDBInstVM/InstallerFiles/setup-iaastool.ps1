@@ -99,12 +99,12 @@ if ($iaasUsePackageName -eq 'true' -or $iaasUsePackageName -eq 'TRUE') {
 
 $iaasPackageName = $setupfile.setup.iaastool.packagename
 if ($iaasUsePackageName -and !$iaasPackageName) {
-  logErr "Unable to read 'Windows Azure Cross Platform Tool' npm package name from setup.xml [\\setup\iaastool\packagename]"
+  logErr "Unable to read 'Windows Azure Command Line Tools for Mac and Linux' npm package name from setup.xml [\\setup\iaastool\packagename]"
 }
 
 $nodeIAASToolDownloadUrl = $setupfile.setup.iaastool.downloadurl
 if (!$iaasUsePackageName -and !$nodeIAASToolDownloadUrl) {
-  logErr "Unable to read 'Windows Azure Cross Platform Tool' download url from setup.xml [\\setup\iaastool\downloadurl]"
+  logErr "Unable to read 'Windows Azure Command Line Tools for Mac and Linux' download url from setup.xml [\\setup\iaastool\downloadurl]"
 }
 
 #---------------------------------------------------------------------------------------------------------------------------
@@ -294,7 +294,7 @@ if ($result -eq 1) {
         $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Install node.js $nodeJSMinVersion"
         $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Do not install node.js $nodeJSMinVersion"
         $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-        logInput "Your node.js version is $version but 'Windows Azure Cross Platform Tool' requires minimum $nodeJSMinVersion, shall I upgrade it to node.js $nodeJSMinVersion for you?"
+        logInput "Your node.js version is $version but 'Windows Azure Command Line Tools for Mac and Linux' requires minimum $nodeJSMinVersion, shall I upgrade it to node.js $nodeJSMinVersion for you?"
         $result = $host.ui.PromptForChoice($null, 
             $null, 
             $options, 
@@ -308,7 +308,7 @@ if ($result -eq 1) {
                  }
             }
             1 {
-                 logErr "node.js minimum version $nodeJSMinVersion is required for 'Windows Azure Cross Platform Tool', Please rerun the script to install it."
+                 logErr "node.js minimum version $nodeJSMinVersion is required for 'Windows Azure Command Line Tools for Mac and Linux', Please rerun the script to install it."
                  exit 1
             }
         }
@@ -316,14 +316,14 @@ if ($result -eq 1) {
         logStatus "Found compactible node.js version $version"
     }
 } elseif ($result -eq 2) {
-    logErr "node.js is required for 'Windows Azure Cross Platform Tool', Please rerun the script to install it."
+    logErr "node.js is required for 'Windows Azure Command Line Tools for Mac and Linux', Please rerun the script to install it."
     cleanDownloadDirAndExit 1
 }
 
 cleanDownloadDir
 #------------------ Download and Install Windows Azure Cross Platform Tool If not installed -------------------------------
 
-$result = checkForPathAndPromptIfNot $nodeIAASToolScriptPath "Windows Azure Cross Platform Tool"
+$result = checkForPathAndPromptIfNot $nodeIAASToolScriptPath "Windows Azure Command Line Tools for Mac and Linux"
 
 if ($result -eq 1) {
     # Download and install IAAS Tool
@@ -331,26 +331,26 @@ if ($result -eq 1) {
     if ($iaasUsePackageName) {
         $packagePath = $iaasPackageName
     } else {
-        $packagePath = downloadFile $nodeIAASToolDownloadUrl "Windows Azure Cross Platform Tool" "azure-0.5.3.tgz"
+        $packagePath = downloadFile $nodeIAASToolDownloadUrl "Windows Azure Command Line Tools for Mac and Linux" "azure-0.5.3.tgz"
     }
 
-    logStatus "Installing 'Windows Azure Cross Platform Tool'"
+    logStatus "Installing 'Windows Azure Command Line Tools for Mac and Linux'"
     Start-Sleep -s 5
     &$npmpath install $packagePath --global
     If ($lastexitcode -ne 0)
     {
-        logErr "npm install of 'Windows Azure Cross Platform Tool' failed"
+        logErr "npm install of 'Windows Azure Command Line Tools for Mac and Linux' failed"
         cleanDownloadDirAndExit 1
     }
 
-    logSuccess "Done with Installation of 'Windows Azure Cross Platform Tool'. Clearing temporary storage directory"
+    logSuccess "Done with Installation of 'Windows Azure Command Line Tools for Mac and Linux'. Clearing temporary storage directory"
     Start-Sleep -s 5
     $storageDir = Join-Path $pwd "downloadtemp"
     if (Test-Path -LiteralPath $storageDir -PathType Container) {
         Remove-Item -path $storageDir -force -Recurse
     }
 } elseif ($result -eq 2) {
-    logErr "'Windows Azure Cross Platform Tool' installation cancelled, Please rerun the script to install it."
+    logErr "'Windows Azure Command Line Tools for Mac and Linux' installation cancelled, Please rerun the script to install it."
     cleanDownloadDirAndExit 1
 }
 
