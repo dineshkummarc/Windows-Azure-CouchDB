@@ -50,7 +50,9 @@
     <Content Include="check-status.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="DeploymentModelCouchOnIaaS.xml" />
+    <Content Include="CouchDBInstVM.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="imagelocations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -81,7 +83,9 @@
     <Content Include="couchdbCreateReplicaDB.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="get-and-install-msi.ps1" />
+    <Content Include="get-and-install-msi.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="help.mht">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
