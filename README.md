@@ -21,8 +21,11 @@ As part of this install the following Microsoft or third party software will be 
 4. Note if you start with a clean machine:  To download public setting file the enhanced security configuration of IE needs to be disabled. Go to Server Manager -> configure IE ESC -> disable for Administrators.
 
 ## Copy the binaries
-1. Download and extract on your local computer the CouchDBInstWR.zip from https://github.com/MSOpenTech/Windows-Azure-CouchDB/downloads
-2. Launch a command prompt (cmd.exe) as an administrator and cd to the local folder selected above
+1. Download and extract on your local computer the latest version for PaaS CouchDBInstWRMMDDYYYY.zip or for IaaS CouchDBInstVMMMDDYYYY.zip (for example CouchDBInstWR06072012.zip) from https://github.com/MSOpenTech/Windows-Azure-CouchDB/downloads
+
+2. Copy the CouchDBInstWR.msi to your local web root. For example c:\inetpub\wwwroot
+
+3. Launch a command prompt (cmd.exe) as an administrator and cd to the local folder selected above
 
 ## Run the installer:
 
