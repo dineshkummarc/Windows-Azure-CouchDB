@@ -51,8 +51,8 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>COPY /Y $(SolutionDir)InstallFiles\CouchDBInstVM.xml  $(TargetDir)
-COPY /Y $(SolutionDir)InstallFiles\get-and-install-msi.ps1  $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>COPY /Y $(SolutionDir)InstallerFiles\CouchDBInstVM.xml  $(TargetDir)
+COPY /Y $(SolutionDir)InstallerFiles\get-and-install-msi.ps1  $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
