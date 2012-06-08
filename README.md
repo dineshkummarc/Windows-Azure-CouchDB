@@ -30,10 +30,12 @@ As part of this install the following Microsoft or third party software will be 
 ## Run the installer:
 
 To run the installer in the IaaS mode hosted in a Windoes Azure VM role you would need to use the CouchDBInstVM.xml that comes with this zip
-  - Inst4WA.exe -XmlConfigPath <yourpath>/CouchDBInstVM.xml -DomainName <youruniquename>  -Subscription <yoursubscription>
+
+    Inst4WA.exe -XmlConfigPath <yourpath>/CouchDBInstVM.xml -DomainName <youruniquename>  -Subscription <yoursubscription>
 
 To run the installer in the PaaS mode hosted in Windoes Azure Worker role you would need to use the CouchDBInstVM.xml that comes with this zip
-  - Inst4WA.exe -XmlConfigPath <yourpath>/CouchDBInstWR.xml -DomainName <youruniquename>  -Subscription <yoursubscription>
+
+    Inst4WA.exe -XmlConfigPath <yourpath>/CouchDBInstWR.xml -DomainName <youruniquename>  -Subscription <yoursubscription>
 
 
 Note: While the installer is running, it will open a browser to download your publish settings file. Save this file to either your downloads folder or the CouchDB Installer folder. You must save the file in one of those two locations for the installer to see it and import the settings.
